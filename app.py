@@ -1,10 +1,10 @@
 from flask import Flask
+import cohere
+from cohere.classify import Example
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    import cohere
-    from cohere.classify import Example
     co = cohere.Client('yZ5jR7RtfXXepb8RwnRsSzxTLm0W0BeSgyIaDfQZ') # This is your trial API key
     response = co.classify(
     model='large',
