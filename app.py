@@ -1,6 +1,6 @@
 import flask
 from flask import Flask
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 CORS(app)
 import cohere
@@ -8,6 +8,7 @@ from cohere.classify import Example
 co = cohere.Client('yZ5jR7RtfXXepb8RwnRsSzxTLm0W0BeSgyIaDfQZ') # This is your trial API key
 
 @app.route('/test')
+@cross_origin()
 def outputcode():
     response = co.classify(
     inputs=["I have a really bad cough, runny nose, abdominal pain, and feel tired"],
